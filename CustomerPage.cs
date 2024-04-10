@@ -25,6 +25,7 @@ namespace CarManagementSystem
 
         private void CustomerPage_Load(object sender, EventArgs e)
         {
+            
             DisplayCar();
         }
 
@@ -33,83 +34,88 @@ namespace CarManagementSystem
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT CarModel,ComapanyName,Type,Rent,CarImage FROM cCarDetails WHERE IsAvailable = 1";
+                string query = "SELECT CarModel, ComapanyName, Type , Rent , CarImage FROM cCarDetails";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    CarListView.Items.Clear();
-                    while (reader.Read())
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
-                        string CarList = $"{reader["CarModel"]}       -       {reader["ComapanyName"]}       -       {reader["Type"]}       -       {reader["Rent"]}       -       {reader["CarImage"]}";
-                        CarListView.Items.Add(CarList);
-                    }
-                    reader.Close();
-                }
-            }
-        }
-
-        private void CarListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CarListView.SelectedItems.Count != -1)
-            {
-                string selctedCar = CarListView.SelectedItem.ToString();
-
-                string[] details = selctedCar.Split(new string[] { "       -       " }, StringSplitOptions.None);
-
-                if (details.Length >= 3)
-                {
-                    CModelTxt.Text = details[0];
-                    CNameTxt.Text = details[1];
-                    TypeTxt.Text = details[2];
-                    HourlyRentTxt.Text = details[3];
-
-                    byte[] CarImage = ImageStore(details[4]);
-
-                    if (CarImage != null && CarImage.Length > 0)
-                    {
-                        // Convert the byte array to a memory stream
-                        using (MemoryStream ms = new MemoryStream(CarImage))
-                        {
-                            // Create an image from the memory stream
-                            Image image = Image.FromStream(ms);
-
-                            // Assign the image to the PictureBox
-                            CarImageBox.Image = image;
-                        }
-                    }
-                    else
-                    {
-                        // If image data is null or empty, clear the PictureBox
-                        CarImageBox.Image = null;
+                        DataTable carTable = new DataTable();
+                        adapter.Fill(carTable);
+                        CarGridView.DataSource = carTable;
                     }
                 }
             }
         }
-        private byte[] ImageStore(string ImageLocation)
+        private byte[] ImageStore(string image)
         {
-            if (string.IsNullOrEmpty(ImageLocation))
+            if (string.IsNullOrEmpty(image))
             {
-                MessageBox.Show("Add Image of the Car");
+                MessageBox.Show("Invalid image path");
                 return null;
             }
 
-            try
+            byte[] imageData = File.ReadAllBytes(image);
+            return imageData;
+        }
+
+        public Image ConvertArraytoImage(byte[] image)
+        {
+            using (MemoryStream ms = new MemoryStream(image))
             {
-                if (!File.Exists(ImageLocation))
+                return Image.FromStream(ms);
+            }
+        }
+
+        void SearchCars()
+        {
+            using (SqlConnection connect = dbConnection.GetConnection())
+            {
+                connect.Open();
+                string searchQuery;
+                SqlCommand cmd;
+
+                if (SearchComBox.Text == "All")
                 {
-                    MessageBox.Show("Image file does not exist at the specified location: " + ImageLocation);
-                    return null;
+                    searchQuery = "SELECT CarModel, ComapanyName, Type , Rent , CarImage FROM cCarDetails WHERE IsAvailable = 1";
+                    cmd = new SqlCommand(searchQuery, connect);
+                }
+                else
+                {
+                    searchQuery = "SELECT CarModel, ComapanyName, Type , Rent , CarImage FROM cCarDetails WHERE IsAvailable = 1 and Type = @Type";
+                    cmd = new SqlCommand(searchQuery, connect);
+                    cmd.Parameters.AddWithValue("@Type", SearchComBox.Text);
                 }
 
-                byte[] CarImage = File.ReadAllBytes(ImageLocation);
-                return CarImage;
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    DataTable carTable = new DataTable();
+                    adapter.Fill(carTable);
+                    CarGridView.DataSource = carTable;
+                }
+                connect.Close();
             }
-            catch (Exception ex)
+        }
+
+            private void CarGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
-                MessageBox.Show("An error occurred while loading image: " + ex.Message);
-                return null;
+                DataGridViewRow row = this.CarGridView.Rows[e.RowIndex];
+
+                CModelTxt.Text = row.Cells[0].Value.ToString();
+                CNameTxt.Text = row.Cells[1].Value.ToString();
+                TypeTxt.Text = row.Cells[2].Value.ToString();
+                HourlyRentTxt.Text = row.Cells[3].Value.ToString();
+                CarImageBox.Image = ConvertArraytoImage((byte[])row.Cells[4].Value);
+
+                
             }
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            SearchCars();
         }
     }
 }
