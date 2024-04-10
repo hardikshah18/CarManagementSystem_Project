@@ -16,11 +16,12 @@ namespace CarManagementSystem
     {
         private Cars cars;
         private dbConnection dbConnection;
+        public List<int> CarID = new List<int>();
         public CustomerPage()
         {
             InitializeComponent();
             dbConnection = new dbConnection();
-            cars = new Cars();
+            
         }
 
         private void CustomerPage_Load(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace CarManagementSystem
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT CarModel,ComapanyName,Type,Rent,CarImage FROM cCarDetails WHERE IsAvailable = 1";
+                string query = "SELECT CarID,CarModel,ComapanyName,Type,Rent FROM cCarDetails WHERE IsAvailable = 1";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -41,7 +42,8 @@ namespace CarManagementSystem
                     CarListView.Items.Clear();
                     while (reader.Read())
                     {
-                        string CarList = $"{reader["CarModel"]}       -       {reader["ComapanyName"]}       -       {reader["Type"]}       -       {reader["Rent"]}       -       {reader["CarImage"]}";
+                        CarID.Add((int)reader["CarID"]);
+                        string CarList = $"{reader["CarModel"]}       -       {reader["ComapanyName"]}       -       {reader["Type"]}       -       {reader["Rent"]}";
                         CarListView.Items.Add(CarList);
                     }
                     reader.Close();
@@ -59,30 +61,31 @@ namespace CarManagementSystem
 
                 if (details.Length >= 3)
                 {
+
                     CModelTxt.Text = details[0];
                     CNameTxt.Text = details[1];
                     TypeTxt.Text = details[2];
                     HourlyRentTxt.Text = details[3];
 
-                    byte[] CarImage = ImageStore(details[4]);
+                    //byte[] CarImage = ImageStore(details[4]);
 
-                    if (CarImage != null && CarImage.Length > 0)
-                    {
-                        // Convert the byte array to a memory stream
-                        using (MemoryStream ms = new MemoryStream(CarImage))
-                        {
-                            // Create an image from the memory stream
-                            Image image = Image.FromStream(ms);
+                    //if (CarImage != null && CarImage.Length > 0)
+                    //{
+                    //    // Convert the byte array to a memory stream
+                    //    using (MemoryStream ms = new MemoryStream(CarImage))
+                    //    {
+                    //        // Create an image from the memory stream
+                    //        Image image = Image.FromStream(ms);
 
-                            // Assign the image to the PictureBox
-                            CarImageBox.Image = image;
-                        }
-                    }
-                    else
-                    {
-                        // If image data is null or empty, clear the PictureBox
-                        CarImageBox.Image = null;
-                    }
+                    //        // Assign the image to the PictureBox
+                    //        CarImageBox.Image = image;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    // If image data is null or empty, clear the PictureBox
+                    //    CarImageBox.Image = null;
+                    //}
                 }
             }
         }
@@ -110,6 +113,41 @@ namespace CarManagementSystem
                 MessageBox.Show("An error occurred while loading image: " + ex.Message);
                 return null;
             }
+        }
+
+        private void BookBtn_Click(object sender, EventArgs e)
+        {
+            MakeRequest request = new MakeRequest(CarListView.SelectedItem.ToString(), CarID[CarListView.SelectedIndex]);
+            request.Show();
+            this.Hide();
+        }
+
+        void searchcar()
+        {
+            using (SqlConnection connect = dbConnection.GetConnection())
+            {
+                connect.Open();
+                string search = "SELECT * FROM cCarDetails WHERE IsAvailable = 1 and Type = @Type";
+
+                using (SqlCommand cmd = new SqlCommand(search, connect))
+                {
+                    cmd.Parameters.AddWithValue("@Type", SearchComBox.Text);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    CarListView.Items.Clear();
+                    while (reader.Read())
+                    {
+                        string CarList = $"{reader["CarModel"]}       -       {reader["ComapanyName"]}       -       {reader["Type"]}";
+                        CarListView.Items.Add(CarList);
+                    }
+                    reader.Close();
+                }
+                connect.Close();
+            }
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            searchcar();
         }
     }
 }
