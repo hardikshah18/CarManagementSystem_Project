@@ -47,7 +47,8 @@ namespace CarManagementSystem
             CNameTxt.Clear();
             HourlyRentTxt.Clear();
             NumPlateTxt.Clear();
-            TypeComBox.SelectedIndex = -1;
+            CarImageBox.Image = null;
+            TypeComBox.SelectedIndex = -1;  
         }
 
         void DisplayCar()
@@ -63,7 +64,8 @@ namespace CarManagementSystem
                     CarListBox.Items.Clear();
                     while (reader.Read())
                     {
-                        string CarList = $"{reader["CarModel"]}       -       {reader["ComapanyName"]}       -       {reader["Type"]}";
+                        string CarList = $"{reader["CarModel"]}       -       {reader["ComapanyName"]}    " +
+                            $"   -       {reader["Type"]}";
                         CarListBox.Items.Add(CarList);
                     }
                     reader.Close();
@@ -97,7 +99,7 @@ namespace CarManagementSystem
             string CModel = CModelTxt.Text;
             string CName = CNameTxt.Text;
             string Type = TypeComBox.Text;
-            decimal Rent = decimal.Parse(HourlyRentTxt.Text);
+             decimal Rent = decimal.Parse(HourlyRentTxt.Text);
             string NumPlate = NumPlateTxt.Text;
             byte[] image = ImageStore(SelectedImage);
 

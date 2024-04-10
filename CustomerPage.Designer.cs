@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerPage));
             this.BookBtn = new System.Windows.Forms.Button();
-            this.CarListView = new System.Windows.Forms.ListBox();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.TypeTxt = new System.Windows.Forms.TextBox();
             this.CarImageBox = new System.Windows.Forms.PictureBox();
@@ -48,29 +47,21 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.CarGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.CarImageBox)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CarGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // BookBtn
             // 
-            this.BookBtn.Location = new System.Drawing.Point(728, 223);
+            this.BookBtn.Location = new System.Drawing.Point(729, 202);
             this.BookBtn.Name = "BookBtn";
             this.BookBtn.Size = new System.Drawing.Size(97, 42);
             this.BookBtn.TabIndex = 4;
             this.BookBtn.Text = "Book Car";
             this.BookBtn.UseVisualStyleBackColor = true;
-            // 
-            // CarListView
-            // 
-            this.CarListView.FormattingEnabled = true;
-            this.CarListView.ItemHeight = 16;
-            this.CarListView.Location = new System.Drawing.Point(54, 275);
-            this.CarListView.Name = "CarListView";
-            this.CarListView.Size = new System.Drawing.Size(772, 148);
-            this.CarListView.TabIndex = 39;
-            this.CarListView.SelectedIndexChanged += new System.EventHandler(this.CarListView_SelectedIndexChanged);
             // 
             // SearchBtn
             // 
@@ -80,6 +71,7 @@
             this.SearchBtn.TabIndex = 4;
             this.SearchBtn.Text = "Search By type";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // TypeTxt
             // 
@@ -171,10 +163,16 @@
             // SearchComBox
             // 
             this.SearchComBox.FormattingEnabled = true;
+            this.SearchComBox.Items.AddRange(new object[] {
+            "All",
+            "SUV",
+            "Sedan",
+            "HatchBack"});
             this.SearchComBox.Location = new System.Drawing.Point(476, 31);
             this.SearchComBox.Name = "SearchComBox";
             this.SearchComBox.Size = new System.Drawing.Size(231, 24);
             this.SearchComBox.TabIndex = 18;
+            this.SearchComBox.Text = "Select Catageory";
             // 
             // label11
             // 
@@ -196,8 +194,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CarGridView);
             this.groupBox2.Controls.Add(this.BookBtn);
-            this.groupBox2.Controls.Add(this.CarListView);
             this.groupBox2.Controls.Add(this.SearchBtn);
             this.groupBox2.Controls.Add(this.TypeTxt);
             this.groupBox2.Controls.Add(this.CarImageBox);
@@ -238,6 +236,17 @@
             this.button2.Text = "Confirm Booking";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // CarGridView
+            // 
+            this.CarGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CarGridView.Location = new System.Drawing.Point(15, 271);
+            this.CarGridView.Name = "CarGridView";
+            this.CarGridView.RowHeadersWidth = 51;
+            this.CarGridView.RowTemplate.Height = 24;
+            this.CarGridView.Size = new System.Drawing.Size(810, 162);
+            this.CarGridView.TabIndex = 39;
+            this.CarGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CarGridView_CellContentClick);
+            // 
             // CustomerPage
             // 
             this.ClientSize = new System.Drawing.Size(870, 569);
@@ -252,6 +261,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CarGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,7 +269,6 @@
         #endregion
 
         private System.Windows.Forms.Button BookBtn;
-        private System.Windows.Forms.ListBox CarListView;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.TextBox TypeTxt;
         private System.Windows.Forms.PictureBox CarImageBox;
@@ -277,5 +286,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView CarGridView;
     }
 }
