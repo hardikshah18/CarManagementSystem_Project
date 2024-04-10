@@ -60,7 +60,7 @@
             // LoginBtn
             // 
             this.LoginBtn.Location = new System.Drawing.Point(120, 223);
-            this.LoginBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoginBtn.Margin = new System.Windows.Forms.Padding(2);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(107, 26);
             this.LoginBtn.TabIndex = 4;
@@ -71,7 +71,7 @@
             // mailtxt
             // 
             this.mailtxt.Location = new System.Drawing.Point(199, 74);
-            this.mailtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mailtxt.Margin = new System.Windows.Forms.Padding(2);
             this.mailtxt.Name = "mailtxt";
             this.mailtxt.Size = new System.Drawing.Size(201, 22);
             this.mailtxt.TabIndex = 6;
@@ -79,7 +79,7 @@
             // passtxt
             // 
             this.passtxt.Location = new System.Drawing.Point(199, 117);
-            this.passtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passtxt.Margin = new System.Windows.Forms.Padding(2);
             this.passtxt.Name = "passtxt";
             this.passtxt.Size = new System.Drawing.Size(201, 22);
             this.passtxt.TabIndex = 7;
@@ -117,9 +117,10 @@
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
