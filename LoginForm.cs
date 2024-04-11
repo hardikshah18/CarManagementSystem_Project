@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace CarManagementSystem
 {
+    
     public partial class LoginForm : Form
     {
         public LoginForm()
@@ -37,7 +38,6 @@ namespace CarManagementSystem
                 // Close the login form or navigate to another form
                 this.Close();
             }
-
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

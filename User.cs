@@ -13,6 +13,7 @@ namespace CarManagementSystem
 {
     public class User
     {
+        public static int userid;
 
         SqlCommand cmd = new SqlCommand();
         SqlDataAdapter adapter = new SqlDataAdapter();
@@ -83,24 +84,11 @@ namespace CarManagementSystem
                         }
                     }
                 }
-
-                //string query = "INSERT INTO cUserDetails (FullName, Password, UserRole) VALUES (@FullName, @Password, @Email, @UserRole)";
-                //SqlCommand command = new SqlCommand(query, connection);
-                //command.Parameters.AddWithValue("@FullName", fullName);
-                //command.Parameters.AddWithValue("@Password", password);
-                //command.Parameters.AddWithValue("@Email", email);
-                //// Assuming 'UserRole' should be 'Customer' by default
-                //command.Parameters.AddWithValue("@UserRole", true); // Assuming 'Customer' is represented as true in the database
-
-                
-                //int rowsAffected = command.ExecuteNonQuery();
-
-                //return rowsAffected > 0;
                 return true;
             }
         }
 
-        public bool Login(string email, string password)
+        public bool Login(string email, string password )
         {
             using (SqlConnection conn = dbConnection.GetConnection())
             {
@@ -109,6 +97,7 @@ namespace CarManagementSystem
                 cmd = new SqlCommand("SELECT * FROM cDriverDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
                 cmd.Parameters.AddWithValue("@UserMail", email);
                 cmd.Parameters.AddWithValue("@Password", password);
+
                 adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 cmd.ExecuteNonQuery();
@@ -121,9 +110,11 @@ namespace CarManagementSystem
                 }
                 else
                 {
-                    cmd = new SqlCommand("SELECT IsAdmin FROM cUserDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
+                    cmd = new SqlCommand("SELECT * FROM cUserDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
                     cmd.Parameters.AddWithValue("@UserMail", email);
                     cmd.Parameters.AddWithValue("@Password", password);
+
+
                     adapter = new SqlDataAdapter(cmd);
                     DataTable table = new DataTable();
                     cmd.ExecuteNonQuery();
@@ -131,6 +122,7 @@ namespace CarManagementSystem
 
                     if (table.Rows.Count > 0)
                     {
+                        userid = int.Parse(table.Rows[0][0].ToString());
                         SqlDataReader reader = cmd.ExecuteReader();
                         reader.Read();
                         if (reader[0].ToString() == "True")
@@ -140,8 +132,11 @@ namespace CarManagementSystem
                         }
                         else
                         {
+                           
                             CustomerPage customer = new CustomerPage();
                             customer.ShowDialog();
+
+                           
                         }
                     }
                     else
@@ -151,31 +146,6 @@ namespace CarManagementSystem
                     }
                 }
                 return true;
-                //object result = cmd.ExecuteScalar();
-
-                //if (result != null && result != DBNull.Value)
-                //{
-                //    bool userRole = Convert.ToBoolean(result);
-
-                //    if (userRole)
-                //    {
-                //        CustomerHomePage customer = new CustomerHomePage();
-                //        customer.ShowDialog();
-                //    }
-                //    else
-                //    {
-                //        AdminHomePage admin = new AdminHomePage();
-                //        admin.ShowDialog();
-
-                //    }
-
-                //    return true;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Please Check your user name and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return false;
-                //}
             }
         }
     }

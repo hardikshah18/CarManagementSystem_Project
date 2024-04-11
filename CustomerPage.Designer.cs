@@ -45,13 +45,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CarGridView = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.CarGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.CarImageBox)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CarGridView)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // BookBtn
@@ -62,6 +62,7 @@
             this.BookBtn.TabIndex = 4;
             this.BookBtn.Text = "Book Car";
             this.BookBtn.UseVisualStyleBackColor = true;
+            this.BookBtn.Click += new System.EventHandler(this.BookBtn_Click);
             // 
             // SearchBtn
             // 
@@ -191,6 +192,7 @@
             this.LogOutBtn.TabIndex = 3;
             this.LogOutBtn.Text = "Log Out";
             this.LogOutBtn.UseVisualStyleBackColor = true;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
             // 
             // groupBox2
             // 
@@ -213,6 +215,18 @@
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " ";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // CarGridView
+            // 
+            this.CarGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CarGridView.Location = new System.Drawing.Point(15, 271);
+            this.CarGridView.Name = "CarGridView";
+            this.CarGridView.RowHeadersWidth = 51;
+            this.CarGridView.RowTemplate.Height = 24;
+            this.CarGridView.Size = new System.Drawing.Size(810, 162);
+            this.CarGridView.TabIndex = 39;
+            this.CarGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CarGridView_CellContentClick);
             // 
             // groupBox3
             // 
@@ -236,17 +250,6 @@
             this.button2.Text = "Confirm Booking";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // CarGridView
-            // 
-            this.CarGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CarGridView.Location = new System.Drawing.Point(15, 271);
-            this.CarGridView.Name = "CarGridView";
-            this.CarGridView.RowHeadersWidth = 51;
-            this.CarGridView.RowTemplate.Height = 24;
-            this.CarGridView.Size = new System.Drawing.Size(810, 162);
-            this.CarGridView.TabIndex = 39;
-            this.CarGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CarGridView_CellContentClick);
-            // 
             // CustomerPage
             // 
             this.ClientSize = new System.Drawing.Size(870, 569);
@@ -259,9 +262,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.CarImageBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CarGridView)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CarGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,6 +289,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView CarGridView;
+        public System.Windows.Forms.DataGridView CarGridView;
     }
 }

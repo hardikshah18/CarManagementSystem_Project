@@ -35,9 +35,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RequestBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DaysTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.FromDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.CarImageBox = new System.Windows.Forms.PictureBox();
             this.TypeTxt = new System.Windows.Forms.TextBox();
@@ -48,7 +48,9 @@
             this.CNameTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.DriverReq = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CarImageBox)).BeginInit();
@@ -95,10 +97,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblTotalAmount);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.RequestBtn);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.DaysTxt);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.FromDate);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.CarImageBox);
             this.groupBox1.Controls.Add(this.TypeTxt);
@@ -109,7 +113,7 @@
             this.groupBox1.Controls.Add(this.CNameTxt);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.DriverReq);
             this.groupBox1.Location = new System.Drawing.Point(13, 119);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(845, 438);
@@ -119,19 +123,21 @@
             // 
             // RequestBtn
             // 
-            this.RequestBtn.Location = new System.Drawing.Point(718, 336);
+            this.RequestBtn.Location = new System.Drawing.Point(718, 364);
             this.RequestBtn.Name = "RequestBtn";
             this.RequestBtn.Size = new System.Drawing.Size(110, 23);
             this.RequestBtn.TabIndex = 4;
             this.RequestBtn.Text = "Make Request";
             this.RequestBtn.UseVisualStyleBackColor = true;
+            this.RequestBtn.Click += new System.EventHandler(this.RequestBtn_Click);
             // 
-            // textBox1
+            // DaysTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(628, 273);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 22);
-            this.textBox1.TabIndex = 52;
+            this.DaysTxt.Location = new System.Drawing.Point(628, 273);
+            this.DaysTxt.Name = "DaysTxt";
+            this.DaysTxt.Size = new System.Drawing.Size(201, 22);
+            this.DaysTxt.TabIndex = 52;
+            this.DaysTxt.TextChanged += new System.EventHandler(this.DaysTxt_TextChanged);
             // 
             // label2
             // 
@@ -142,12 +148,12 @@
             this.label2.TabIndex = 51;
             this.label2.Text = "Number of Days :";
             // 
-            // dateTimePicker1
+            // FromDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(629, 222);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 50;
+            this.FromDate.Location = new System.Drawing.Point(629, 222);
+            this.FromDate.Name = "FromDate";
+            this.FromDate.Size = new System.Drawing.Size(200, 22);
+            this.FromDate.TabIndex = 50;
             // 
             // label1
             // 
@@ -236,17 +242,36 @@
             this.label11.TabIndex = 39;
             this.label11.Text = "Car Model :";
             // 
-            // radioButton1
+            // DriverReq
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(482, 339);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(112, 20);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Need a Driver";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.DriverReq.AutoSize = true;
+            this.DriverReq.Location = new System.Drawing.Point(482, 367);
+            this.DriverReq.Margin = new System.Windows.Forms.Padding(2);
+            this.DriverReq.Name = "DriverReq";
+            this.DriverReq.Size = new System.Drawing.Size(112, 20);
+            this.DriverReq.TabIndex = 7;
+            this.DriverReq.TabStop = true;
+            this.DriverReq.Text = "Need a Driver";
+            this.DriverReq.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(482, 321);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 16);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "Total Amount :";
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(626, 321);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(14, 16);
+            this.lblTotalAmount.TabIndex = 54;
+            this.lblTotalAmount.Text = "0";
+            this.lblTotalAmount.Click += new System.EventHandler(this.TotalAmount_Click);
             // 
             // MakeRequest
             // 
@@ -257,6 +282,7 @@
             this.Controls.Add(this.groupBox3);
             this.Name = "MakeRequest";
             this.Text = "MakeRequest";
+            this.Load += new System.EventHandler(this.MakeRequest_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -274,9 +300,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button RequestBtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DaysTxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker FromDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox CarImageBox;
         private System.Windows.Forms.TextBox TypeTxt;
@@ -287,6 +313,8 @@
         private System.Windows.Forms.TextBox CNameTxt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton DriverReq;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTotalAmount;
     }
 }

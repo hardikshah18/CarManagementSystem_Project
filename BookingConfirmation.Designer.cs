@@ -28,101 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.panel1.SuspendLayout();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.LogOutBtn = new System.Windows.Forms.Button();
+            this.MailBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // groupBox3
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(97, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(578, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Thank you! This is your Confirmation of booking";
+            this.groupBox3.Controls.Add(this.LogOutBtn);
+            this.groupBox3.Controls.Add(this.MailBtn);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(845, 100);
+            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = " ";
             // 
-            // panel1
+            // LogOutBtn
             // 
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.richTextBox1);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(87, 119);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 138);
-            this.panel1.TabIndex = 10;
+            this.LogOutBtn.Location = new System.Drawing.Point(753, 18);
+            this.LogOutBtn.Name = "LogOutBtn";
+            this.LogOutBtn.Size = new System.Drawing.Size(75, 23);
+            this.LogOutBtn.TabIndex = 3;
+            this.LogOutBtn.Text = "Log Out";
+            this.LogOutBtn.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // MailBtn
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(303, 35);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(221, 76);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "Type: Sedan\nAir Bags: Yes\nBack Camera: Yes\nFuel Type: Regular Gas";
+            this.MailBtn.Location = new System.Drawing.Point(729, 60);
+            this.MailBtn.Name = "MailBtn";
+            this.MailBtn.Size = new System.Drawing.Size(97, 23);
+            this.MailBtn.TabIndex = 1;
+            this.MailBtn.Text = "Mail Box";
+            this.MailBtn.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(316, 10);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 16);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Details";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 10);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Honda Civic";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(39, 76);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(112, 20);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Need a Driver";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 16);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Welcome Customer";
             // 
             // BookingConfirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 507);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClientSize = new System.Drawing.Size(870, 569);
+            this.Controls.Add(this.groupBox3);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BookingConfirmation";
             this.Text = "BookingConfirmation";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button LogOutBtn;
+        private System.Windows.Forms.Button MailBtn;
+        private System.Windows.Forms.Label label3;
     }
 }
