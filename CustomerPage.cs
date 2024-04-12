@@ -56,18 +56,6 @@ namespace CarManagementSystem
                 }
             }
         }
-        private byte[] ImageStore(string image)
-        {
-            if (string.IsNullOrEmpty(image))
-            {
-                MessageBox.Show("Invalid image path");
-                return null;
-            }
-
-            byte[] imageData = File.ReadAllBytes(image);
-            return imageData;
-        }
-
         public Image ConvertArraytoImage(byte[] image)
         {
             using (MemoryStream ms = new MemoryStream(image))
@@ -106,21 +94,21 @@ namespace CarManagementSystem
             }
         }
 
-            private void CarGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CarGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.CarGridView.Rows[e.RowIndex];
+                DataGridViewRow row = this.CarGridView.Rows[e.RowIndex];
 
-                    CModelTxt.Text = row.Cells[1].Value.ToString();
-                    CNameTxt.Text = row.Cells[2].Value.ToString();
-                    TypeTxt.Text = row.Cells[3].Value.ToString();
-                    HourlyRentTxt.Text = row.Cells[4].Value.ToString();
-                    CarImageBox.Image = ConvertArraytoImage((byte[])row.Cells[5].Value);
+                CModelTxt.Text = row.Cells[1].Value.ToString();
+                CNameTxt.Text = row.Cells[2].Value.ToString();
+                TypeTxt.Text = row.Cells[3].Value.ToString();
+                HourlyRentTxt.Text = row.Cells[4].Value.ToString();
+                CarImageBox.Image = ConvertArraytoImage((byte[])row.Cells[5].Value);
 
-                CarID = Convert.ToInt32(row.Cells[0].Value.ToString());
-                }
+            CarID = Convert.ToInt32(row.Cells[0].Value.ToString());
             }
+        }
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {

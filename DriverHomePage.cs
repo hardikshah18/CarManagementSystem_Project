@@ -16,5 +16,10 @@ namespace CarManagementSystem
         {
             InitializeComponent();
         }
+
+        private void DriverHomePage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -8,40 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace CarManagementSystem
 {
-    public partial class AdminHomePage : Form
+    public partial class ViewRequestCustomer : Form
     {
         private dbConnection dbConnection;
-        public AdminHomePage()
+
+        public ViewRequestCustomer()
         {
             InitializeComponent();
             dbConnection = new dbConnection();
         }
 
-        private void DriverDetailBtn_Click(object sender, EventArgs e)
+        private void ViewRequestCustomer_Load(object sender, EventArgs e)
         {
-            DriverDetail driver = new DriverDetail();
-            driver.ShowDialog();
-            this.Hide();
+            DisplayRequest();
         }
 
-        private void CarDetailBtn_Click(object sender, EventArgs e)
-        {
-            CarDetail car = new CarDetail();
-            car.ShowDialog();
-            this.Hide();
-        }
-
-        private void LogOutBtn_Click(object sender, EventArgs e)
-        {
-            LoginForm login = new LoginForm();
-            login.ShowDialog();
-            this.Hide();
-        }
-
-        void DisplayCar()
+        void DisplayRequest()
         {
             using (SqlConnection conn = dbConnection.GetConnection())
             {
@@ -56,20 +42,10 @@ namespace CarManagementSystem
                     {
                         DataTable carTable = new DataTable();
                         adapter.Fill(carTable);
-                        RequestList.DataSource = carTable;
+                        RequestGridView.DataSource = carTable;
                     }
                 }
             }
-        }
-
-        private void AdminHomePage_Load(object sender, EventArgs e)
-        {
-            DisplayCar();
-        }
-
-        private void RequestList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

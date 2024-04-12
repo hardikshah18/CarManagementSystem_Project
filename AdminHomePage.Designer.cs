@@ -45,8 +45,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.PickUpDateTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.IsDriverReq = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.ReqDateTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.ReqCmbBox = new System.Windows.Forms.ComboBox();
@@ -63,6 +61,7 @@
             this.DIDCmbBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
+            this.IsDriverReq = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RequestList)).BeginInit();
@@ -123,6 +122,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.IsDriverReq);
             this.groupBox2.Controls.Add(this.RequestList);
             this.groupBox2.Controls.Add(this.CarImageBox);
             this.groupBox2.Controls.Add(this.CarModalTxt);
@@ -134,8 +134,6 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.PickUpDateTxt);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.IsDriverReq);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.ReqDateTxt);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.ReqCmbBox);
@@ -168,6 +166,7 @@
             this.RequestList.RowTemplate.Height = 24;
             this.RequestList.Size = new System.Drawing.Size(801, 123);
             this.RequestList.TabIndex = 33;
+            this.RequestList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestList_CellContentClick);
             // 
             // CarImageBox
             // 
@@ -179,7 +178,7 @@
             // 
             // CarModalTxt
             // 
-            this.CarModalTxt.Location = new System.Drawing.Point(501, 235);
+            this.CarModalTxt.Location = new System.Drawing.Point(503, 197);
             this.CarModalTxt.Name = "CarModalTxt";
             this.CarModalTxt.Size = new System.Drawing.Size(121, 22);
             this.CarModalTxt.TabIndex = 31;
@@ -187,7 +186,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(352, 238);
+            this.label13.Location = new System.Drawing.Point(354, 200);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 16);
             this.label13.TabIndex = 30;
@@ -195,7 +194,7 @@
             // 
             // NumDaysTxt
             // 
-            this.NumDaysTxt.Location = new System.Drawing.Point(499, 198);
+            this.NumDaysTxt.Location = new System.Drawing.Point(501, 160);
             this.NumDaysTxt.Name = "NumDaysTxt";
             this.NumDaysTxt.Size = new System.Drawing.Size(121, 22);
             this.NumDaysTxt.TabIndex = 29;
@@ -203,7 +202,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(350, 201);
+            this.label12.Location = new System.Drawing.Point(352, 163);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 16);
             this.label12.TabIndex = 28;
@@ -220,7 +219,7 @@
             // 
             // DropOffDateTxt
             // 
-            this.DropOffDateTxt.Location = new System.Drawing.Point(499, 168);
+            this.DropOffDateTxt.Location = new System.Drawing.Point(501, 130);
             this.DropOffDateTxt.Name = "DropOffDateTxt";
             this.DropOffDateTxt.Size = new System.Drawing.Size(121, 22);
             this.DropOffDateTxt.TabIndex = 26;
@@ -228,7 +227,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(350, 171);
+            this.label7.Location = new System.Drawing.Point(352, 133);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 16);
             this.label7.TabIndex = 25;
@@ -236,7 +235,7 @@
             // 
             // PickUpDateTxt
             // 
-            this.PickUpDateTxt.Location = new System.Drawing.Point(501, 133);
+            this.PickUpDateTxt.Location = new System.Drawing.Point(503, 95);
             this.PickUpDateTxt.Name = "PickUpDateTxt";
             this.PickUpDateTxt.Size = new System.Drawing.Size(121, 22);
             this.PickUpDateTxt.TabIndex = 24;
@@ -244,28 +243,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(352, 136);
+            this.label8.Location = new System.Drawing.Point(354, 98);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 16);
             this.label8.TabIndex = 23;
             this.label8.Text = "Pick Up Date :";
-            // 
-            // IsDriverReq
-            // 
-            this.IsDriverReq.Enabled = false;
-            this.IsDriverReq.Location = new System.Drawing.Point(501, 102);
-            this.IsDriverReq.Name = "IsDriverReq";
-            this.IsDriverReq.Size = new System.Drawing.Size(121, 22);
-            this.IsDriverReq.TabIndex = 22;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(352, 102);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(119, 16);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Driver Requested :";
             // 
             // ReqDateTxt
             // 
@@ -399,6 +381,17 @@
             this.SearchBtn.Text = "Search";
             this.SearchBtn.UseVisualStyleBackColor = true;
             // 
+            // IsDriverReq
+            // 
+            this.IsDriverReq.AutoSize = true;
+            this.IsDriverReq.Location = new System.Drawing.Point(357, 239);
+            this.IsDriverReq.Name = "IsDriverReq";
+            this.IsDriverReq.Size = new System.Drawing.Size(136, 20);
+            this.IsDriverReq.TabIndex = 34;
+            this.IsDriverReq.TabStop = true;
+            this.IsDriverReq.Text = "Is Driver Required";
+            this.IsDriverReq.UseVisualStyleBackColor = true;
+            // 
             // AdminHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -409,6 +402,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminHomePage";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.AdminHomePage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -450,11 +444,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox PickUpDateTxt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox IsDriverReq;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox ReqDateTxt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox ReqCmbBox;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RadioButton IsDriverReq;
     }
 }

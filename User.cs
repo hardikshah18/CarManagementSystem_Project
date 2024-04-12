@@ -110,7 +110,7 @@ namespace CarManagementSystem
                 }
                 else
                 {
-                    cmd = new SqlCommand("SELECT * FROM cUserDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
+                    cmd = new SqlCommand("SELECT UserID, IsAdmin FROM cUserDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
                     cmd.Parameters.AddWithValue("@UserMail", email);
                     cmd.Parameters.AddWithValue("@Password", password);
 
@@ -125,7 +125,7 @@ namespace CarManagementSystem
                         userid = int.Parse(table.Rows[0][0].ToString());
                         SqlDataReader reader = cmd.ExecuteReader();
                         reader.Read();
-                        if (reader[0].ToString() == "True")
+                        if (reader[1].ToString() == "True")
                         {
                             AdminHomePage admin = new AdminHomePage();
                             admin.ShowDialog();

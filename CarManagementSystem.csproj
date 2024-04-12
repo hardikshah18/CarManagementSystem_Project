@@ -123,6 +123,12 @@
     </Compile>
     <Compile Include="dbConnection.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="ViewRequestCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewRequestCustomer.Designer.cs">
+      <DependentUpon>ViewRequestCustomer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </EmbeddedResource>
