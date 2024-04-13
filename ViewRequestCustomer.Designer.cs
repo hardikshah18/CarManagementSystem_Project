@@ -48,11 +48,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.RequestGridView = new System.Windows.Forms.DataGridView();
+            this.DriReqRadioBtn = new System.Windows.Forms.RadioButton();
+            this.FilterComboBox = new System.Windows.Forms.ComboBox();
             this.ReqStatusTextBox = new System.Windows.Forms.TextBox();
             this.ReqStatuslbl = new System.Windows.Forms.Label();
-            this.FilterBtn = new System.Windows.Forms.Button();
-            this.FilterComboBox = new System.Windows.Forms.ComboBox();
+            this.RequestGridView = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RequestGridView)).BeginInit();
@@ -61,7 +61,7 @@
             // lblTotalAmount
             // 
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(149, 145);
+            this.lblTotalAmount.Location = new System.Drawing.Point(149, 151);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(14, 16);
             this.lblTotalAmount.TabIndex = 54;
@@ -70,7 +70,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 145);
+            this.label4.Location = new System.Drawing.Point(2, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 16);
             this.label4.TabIndex = 53;
@@ -78,24 +78,26 @@
             // 
             // PayBtn
             // 
-            this.PayBtn.Location = new System.Drawing.Point(698, 139);
+            this.PayBtn.Enabled = false;
+            this.PayBtn.Location = new System.Drawing.Point(712, 182);
             this.PayBtn.Name = "PayBtn";
             this.PayBtn.Size = new System.Drawing.Size(110, 23);
             this.PayBtn.TabIndex = 4;
             this.PayBtn.Text = "Pay";
             this.PayBtn.UseVisualStyleBackColor = true;
+            this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
             // 
             // DaysTxt
             // 
             this.DaysTxt.Location = new System.Drawing.Point(624, 83);
             this.DaysTxt.Name = "DaysTxt";
-            this.DaysTxt.Size = new System.Drawing.Size(201, 22);
+            this.DaysTxt.Size = new System.Drawing.Size(204, 22);
             this.DaysTxt.TabIndex = 52;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(475, 83);
+            this.label2.Location = new System.Drawing.Point(478, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 16);
             this.label2.TabIndex = 51;
@@ -105,7 +107,7 @@
             // 
             this.FromDate.Location = new System.Drawing.Point(152, 81);
             this.FromDate.Name = "FromDate";
-            this.FromDate.Size = new System.Drawing.Size(200, 22);
+            this.FromDate.Size = new System.Drawing.Size(204, 22);
             this.FromDate.TabIndex = 50;
             // 
             // label1
@@ -202,6 +204,7 @@
             this.MailBtn.TabIndex = 1;
             this.MailBtn.Text = "Mail Box";
             this.MailBtn.UseVisualStyleBackColor = true;
+            this.MailBtn.Click += new System.EventHandler(this.MailBtn_Click);
             // 
             // groupBox3
             // 
@@ -226,8 +229,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DriReqRadioBtn);
             this.groupBox1.Controls.Add(this.FilterComboBox);
-            this.groupBox1.Controls.Add(this.FilterBtn);
             this.groupBox1.Controls.Add(this.ReqStatusTextBox);
             this.groupBox1.Controls.Add(this.ReqStatuslbl);
             this.groupBox1.Controls.Add(this.RequestGridView);
@@ -253,20 +256,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " ";
             // 
-            // RequestGridView
+            // DriReqRadioBtn
             // 
-            this.RequestGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RequestGridView.Location = new System.Drawing.Point(6, 232);
-            this.RequestGridView.Name = "RequestGridView";
-            this.RequestGridView.RowHeadersWidth = 51;
-            this.RequestGridView.RowTemplate.Height = 24;
-            this.RequestGridView.Size = new System.Drawing.Size(816, 200);
-            this.RequestGridView.TabIndex = 55;
+            this.DriReqRadioBtn.AutoSize = true;
+            this.DriReqRadioBtn.Location = new System.Drawing.Point(222, 151);
+            this.DriReqRadioBtn.Name = "DriReqRadioBtn";
+            this.DriReqRadioBtn.Size = new System.Drawing.Size(134, 20);
+            this.DriReqRadioBtn.TabIndex = 60;
+            this.DriReqRadioBtn.TabStop = true;
+            this.DriReqRadioBtn.Text = "Driver Requested";
+            this.DriReqRadioBtn.UseVisualStyleBackColor = true;
+            // 
+            // FilterComboBox
+            // 
+            this.FilterComboBox.FormattingEnabled = true;
+            this.FilterComboBox.Items.AddRange(new object[] {
+            "Pending",
+            "Decline",
+            "Accepted"});
+            this.FilterComboBox.Location = new System.Drawing.Point(5, 189);
+            this.FilterComboBox.Name = "FilterComboBox";
+            this.FilterComboBox.Size = new System.Drawing.Size(121, 24);
+            this.FilterComboBox.TabIndex = 59;
+            this.FilterComboBox.Text = "Select Status";
+            this.FilterComboBox.SelectedIndexChanged += new System.EventHandler(this.FilterComboBox_SelectedIndexChanged);
             // 
             // ReqStatusTextBox
             // 
             this.ReqStatusTextBox.Enabled = false;
-            this.ReqStatusTextBox.Location = new System.Drawing.Point(425, 139);
+            this.ReqStatusTextBox.Location = new System.Drawing.Point(305, 186);
             this.ReqStatusTextBox.Name = "ReqStatusTextBox";
             this.ReqStatusTextBox.Size = new System.Drawing.Size(204, 22);
             this.ReqStatusTextBox.TabIndex = 57;
@@ -274,29 +292,23 @@
             // ReqStatuslbl
             // 
             this.ReqStatuslbl.AutoSize = true;
-            this.ReqStatuslbl.Location = new System.Drawing.Point(269, 142);
+            this.ReqStatuslbl.Location = new System.Drawing.Point(149, 189);
             this.ReqStatuslbl.Name = "ReqStatuslbl";
             this.ReqStatuslbl.Size = new System.Drawing.Size(107, 16);
             this.ReqStatuslbl.TabIndex = 56;
             this.ReqStatuslbl.Text = "Request Status : ";
             // 
-            // FilterBtn
+            // RequestGridView
             // 
-            this.FilterBtn.Location = new System.Drawing.Point(152, 190);
-            this.FilterBtn.Name = "FilterBtn";
-            this.FilterBtn.Size = new System.Drawing.Size(110, 23);
-            this.FilterBtn.TabIndex = 58;
-            this.FilterBtn.Text = "Filter";
-            this.FilterBtn.UseVisualStyleBackColor = true;
-            // 
-            // FilterComboBox
-            // 
-            this.FilterComboBox.FormattingEnabled = true;
-            this.FilterComboBox.Location = new System.Drawing.Point(5, 189);
-            this.FilterComboBox.Name = "FilterComboBox";
-            this.FilterComboBox.Size = new System.Drawing.Size(121, 24);
-            this.FilterComboBox.TabIndex = 59;
-            this.FilterComboBox.Text = "Select Status";
+            this.RequestGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RequestGridView.Location = new System.Drawing.Point(6, 232);
+            this.RequestGridView.Name = "RequestGridView";
+            this.RequestGridView.RowHeadersWidth = 51;
+            this.RequestGridView.RowTemplate.Height = 24;
+            this.RequestGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.RequestGridView.Size = new System.Drawing.Size(816, 200);
+            this.RequestGridView.TabIndex = 55;
+            this.RequestGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestGridView_CellContentClick);
             // 
             // ViewRequestCustomer
             // 
@@ -343,6 +355,6 @@
         private System.Windows.Forms.TextBox ReqStatusTextBox;
         private System.Windows.Forms.Label ReqStatuslbl;
         private System.Windows.Forms.ComboBox FilterComboBox;
-        private System.Windows.Forms.Button FilterBtn;
+        private System.Windows.Forms.RadioButton DriReqRadioBtn;
     }
 }

@@ -34,6 +34,8 @@
             this.MailBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.RequestBtn = new System.Windows.Forms.Button();
             this.DaysTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,9 +50,7 @@
             this.CNameTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.DriverReq = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.DriverReq = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CarImageBox)).BeginInit();
@@ -97,6 +97,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DriverReq);
             this.groupBox1.Controls.Add(this.lblTotalAmount);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.RequestBtn);
@@ -113,13 +114,31 @@
             this.groupBox1.Controls.Add(this.CNameTxt);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.DriverReq);
             this.groupBox1.Location = new System.Drawing.Point(13, 119);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(845, 438);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " ";
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(626, 321);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(14, 16);
+            this.lblTotalAmount.TabIndex = 54;
+            this.lblTotalAmount.Text = "0";
+            this.lblTotalAmount.Click += new System.EventHandler(this.TotalAmount_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(482, 321);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 16);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "Total Amount :";
             // 
             // RequestBtn
             // 
@@ -245,33 +264,12 @@
             // DriverReq
             // 
             this.DriverReq.AutoSize = true;
-            this.DriverReq.Location = new System.Drawing.Point(482, 367);
-            this.DriverReq.Margin = new System.Windows.Forms.Padding(2);
+            this.DriverReq.Location = new System.Drawing.Point(482, 366);
             this.DriverReq.Name = "DriverReq";
-            this.DriverReq.Size = new System.Drawing.Size(112, 20);
-            this.DriverReq.TabIndex = 7;
-            this.DriverReq.TabStop = true;
-            this.DriverReq.Text = "Need a Driver";
+            this.DriverReq.Size = new System.Drawing.Size(95, 20);
+            this.DriverReq.TabIndex = 55;
+            this.DriverReq.Text = "checkBox1";
             this.DriverReq.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(482, 321);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 16);
-            this.label4.TabIndex = 53;
-            this.label4.Text = "Total Amount :";
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(626, 321);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(14, 16);
-            this.lblTotalAmount.TabIndex = 54;
-            this.lblTotalAmount.Text = "0";
-            this.lblTotalAmount.Click += new System.EventHandler(this.TotalAmount_Click);
             // 
             // MakeRequest
             // 
@@ -313,8 +311,8 @@
         private System.Windows.Forms.TextBox CNameTxt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RadioButton DriverReq;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTotalAmount;
+        private System.Windows.Forms.CheckBox DriverReq;
     }
 }

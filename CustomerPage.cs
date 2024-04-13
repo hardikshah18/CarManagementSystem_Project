@@ -43,7 +43,7 @@ namespace CarManagementSystem
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT CarID,CarModel, ComapanyName, Type , Rent , CarImage FROM cCarDetails";
+                string query = "SELECT CarID,CarModel, ComapanyName, Type , Rent , CarImage, IsAvailable FROM cCarDetails WHERE IsAvailable = 1";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -106,7 +106,7 @@ namespace CarManagementSystem
                 HourlyRentTxt.Text = row.Cells[4].Value.ToString();
                 CarImageBox.Image = ConvertArraytoImage((byte[])row.Cells[5].Value);
 
-            CarID = Convert.ToInt32(row.Cells[0].Value.ToString());
+                CarID = Convert.ToInt32(row.Cells[0].Value.ToString());
             }
         }
 
@@ -138,6 +138,13 @@ namespace CarManagementSystem
         {
             LoginForm login = new LoginForm();
             login.Show();
+            this.Hide();
+        }
+
+        private void MailBtn_Click(object sender, EventArgs e)
+        {
+            ViewRequestCustomer notification = new ViewRequestCustomer();
+            notification.Show();
             this.Hide();
         }
     }

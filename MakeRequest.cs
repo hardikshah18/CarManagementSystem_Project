@@ -79,7 +79,7 @@ namespace CarManagementSystem
                 days = Convert.ToInt32(DaysTxt.Text);
                 totamount = HRent * days * 24;
                 lblTotalAmount.Text = totamount.ToString();
-            }catch (Exception ex)
+            }catch (Exception)
             {
                 lblTotalAmount.Text = "0";
             }

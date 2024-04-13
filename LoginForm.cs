@@ -36,7 +36,7 @@ namespace CarManagementSystem
             if (loginSuccessful)
             {
                 // Close the login form or navigate to another form
-                this.Close();
+                this.Hide();
             }
         }
 

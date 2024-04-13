@@ -28,36 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.NumOfDays = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DateTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.TypeTxt = new System.Windows.Forms.TextBox();
-            this.HourlyRentTxt = new System.Windows.Forms.TextBox();
+            this.CustomerNameTxt = new System.Windows.Forms.TextBox();
+            this.LocationTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.CModelTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.CNameTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.CarListView = new System.Windows.Forms.ListBox();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.CarDetailBtn = new System.Windows.Forms.Button();
             this.ReqBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DriverReq = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DriverReq)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox2
+            // NumOfDays
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(573, 411);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(231, 22);
-            this.textBox2.TabIndex = 55;
+            this.NumOfDays.Enabled = false;
+            this.NumOfDays.Location = new System.Drawing.Point(573, 411);
+            this.NumOfDays.Name = "NumOfDays";
+            this.NumOfDays.Size = new System.Drawing.Size(231, 22);
+            this.NumOfDays.TabIndex = 55;
             // 
             // label3
             // 
@@ -68,13 +69,13 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "No. of Days :";
             // 
-            // textBox1
+            // DateTxt
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(180, 411);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 22);
-            this.textBox1.TabIndex = 53;
+            this.DateTxt.Enabled = false;
+            this.DateTxt.Location = new System.Drawing.Point(180, 411);
+            this.DateTxt.Name = "DateTxt";
+            this.DateTxt.Size = new System.Drawing.Size(231, 22);
+            this.DateTxt.TabIndex = 53;
             // 
             // label2
             // 
@@ -85,21 +86,21 @@
             this.label2.TabIndex = 52;
             this.label2.Text = "Date :";
             // 
-            // TypeTxt
+            // CustomerNameTxt
             // 
-            this.TypeTxt.Enabled = false;
-            this.TypeTxt.Location = new System.Drawing.Point(180, 343);
-            this.TypeTxt.Name = "TypeTxt";
-            this.TypeTxt.Size = new System.Drawing.Size(231, 22);
-            this.TypeTxt.TabIndex = 51;
+            this.CustomerNameTxt.Enabled = false;
+            this.CustomerNameTxt.Location = new System.Drawing.Point(180, 343);
+            this.CustomerNameTxt.Name = "CustomerNameTxt";
+            this.CustomerNameTxt.Size = new System.Drawing.Size(231, 22);
+            this.CustomerNameTxt.TabIndex = 51;
             // 
-            // HourlyRentTxt
+            // LocationTxt
             // 
-            this.HourlyRentTxt.Enabled = false;
-            this.HourlyRentTxt.Location = new System.Drawing.Point(573, 343);
-            this.HourlyRentTxt.Name = "HourlyRentTxt";
-            this.HourlyRentTxt.Size = new System.Drawing.Size(231, 22);
-            this.HourlyRentTxt.TabIndex = 50;
+            this.LocationTxt.Enabled = false;
+            this.LocationTxt.Location = new System.Drawing.Point(573, 343);
+            this.LocationTxt.Name = "LocationTxt";
+            this.LocationTxt.Size = new System.Drawing.Size(231, 22);
+            this.LocationTxt.TabIndex = 50;
             // 
             // label8
             // 
@@ -153,15 +154,6 @@
             this.label11.TabIndex = 44;
             this.label11.Text = "Car Model :";
             // 
-            // CarListView
-            // 
-            this.CarListView.FormattingEnabled = true;
-            this.CarListView.ItemHeight = 16;
-            this.CarListView.Location = new System.Drawing.Point(32, 22);
-            this.CarListView.Name = "CarListView";
-            this.CarListView.Size = new System.Drawing.Size(772, 228);
-            this.CarListView.TabIndex = 39;
-            // 
             // LogOutBtn
             // 
             this.LogOutBtn.Location = new System.Drawing.Point(753, 18);
@@ -170,6 +162,7 @@
             this.LogOutBtn.TabIndex = 3;
             this.LogOutBtn.Text = "button3";
             this.LogOutBtn.UseVisualStyleBackColor = true;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
             // 
             // CarDetailBtn
             // 
@@ -200,25 +193,36 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.DriverReq);
+            this.groupBox2.Controls.Add(this.NumOfDays);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.DateTxt);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.TypeTxt);
-            this.groupBox2.Controls.Add(this.HourlyRentTxt);
+            this.groupBox2.Controls.Add(this.CustomerNameTxt);
+            this.groupBox2.Controls.Add(this.LocationTxt);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.CModelTxt);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.CNameTxt);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.CarListView);
             this.groupBox2.Location = new System.Drawing.Point(13, 118);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(845, 439);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " ";
+            // 
+            // DriverReq
+            // 
+            this.DriverReq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DriverReq.Location = new System.Drawing.Point(26, 31);
+            this.DriverReq.Name = "DriverReq";
+            this.DriverReq.RowHeadersWidth = 51;
+            this.DriverReq.RowTemplate.Height = 24;
+            this.DriverReq.Size = new System.Drawing.Size(778, 212);
+            this.DriverReq.TabIndex = 56;
+            this.DriverReq.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DriverReq_CellContentClick);
             // 
             // groupBox1
             // 
@@ -245,6 +249,7 @@
             this.Load += new System.EventHandler(this.DriverHomePage_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DriverReq)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -253,24 +258,24 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox NumOfDays;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DateTxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TypeTxt;
-        private System.Windows.Forms.TextBox HourlyRentTxt;
+        private System.Windows.Forms.TextBox CustomerNameTxt;
+        private System.Windows.Forms.TextBox LocationTxt;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox CModelTxt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox CNameTxt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListBox CarListView;
         private System.Windows.Forms.Button LogOutBtn;
         private System.Windows.Forms.Button CarDetailBtn;
         private System.Windows.Forms.Button ReqBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView DriverReq;
     }
 }

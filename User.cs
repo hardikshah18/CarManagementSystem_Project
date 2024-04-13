@@ -14,6 +14,7 @@ namespace CarManagementSystem
     public class User
     {
         public static int userid;
+        public static int driverid;
 
         SqlCommand cmd = new SqlCommand();
         SqlDataAdapter adapter = new SqlDataAdapter();
@@ -94,7 +95,7 @@ namespace CarManagementSystem
             {
                 conn.Open();
 
-                cmd = new SqlCommand("SELECT * FROM cDriverDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
+                cmd = new SqlCommand("SELECT DriverID FROM cDriverDetails WHERE EmailID = @UserMail AND Password = @Password", conn);
                 cmd.Parameters.AddWithValue("@UserMail", email);
                 cmd.Parameters.AddWithValue("@Password", password);
 
@@ -105,6 +106,10 @@ namespace CarManagementSystem
 
                 if(dt.Rows.Count > 0)
                 {
+                    driverid =int.Parse(dt.Rows[0][0].ToString());
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
                     DriverHomePage driver = new DriverHomePage();
                     driver.ShowDialog();
                 }
@@ -135,8 +140,6 @@ namespace CarManagementSystem
                            
                             CustomerPage customer = new CustomerPage();
                             customer.ShowDialog();
-
-                           
                         }
                     }
                     else

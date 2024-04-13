@@ -125,6 +125,7 @@
             this.MailBtn.TabIndex = 1;
             this.MailBtn.Text = "Mail Box";
             this.MailBtn.UseVisualStyleBackColor = true;
+            this.MailBtn.Click += new System.EventHandler(this.MailBtn_Click);
             // 
             // label3
             // 

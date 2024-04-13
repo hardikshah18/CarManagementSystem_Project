@@ -16,7 +16,7 @@ namespace CarManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CustomerPage());
+            Application.Run(new LoginForm());
         }
     }
 }
